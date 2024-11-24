@@ -40,17 +40,34 @@ class Exam{
         return sum
     }
 
+    max(students){
+        let max = 0;
+        let student = null
+        for (let i = 0; i < students.length; i++){
+            let studentScore = students[i].exams[this.name];
+            if(studentScore > max){
+                max = studentScore
+                student = students[i].name;
+            }
+        }
+        return `A maior nota em ${this.name} foi ${max} do aluno ${student}`
+    }
+
 }
 
-let answer = ["A", "B", "C", "D", "E"]
-let weight = [2,2,2,3,1]
-let matematic = new Exam(answer, weight, "Matematica")
-
+let matematic = new Exam( ["A", "B", "C", "D", "E"], [2,2,2,3,1], "Matematica")
 let student1 = new Student("Davi")
-let studentAnswer = ["A", "B", "C", "D", "E"]
-
-let result = matematic.result(studentAnswer)
-
+student1.setTemporaryAnwer(["A", "B", "C", "D", "E"])
+let result = matematic.result(student1.temporaryAnwers)
 student1.addExam(matematic,result)
 
 console.log(`${student1.name} tirou ${result} em ${matematic.name}`)
+
+let student2 = new Student("Joao")
+student2.setTemporaryAnwer(["A", "B", "C", "E", "E"])
+let result2 = matematic.result(student2.temporaryAnwers)
+student2.addExam(matematic,result2)
+
+console.log(`${student2.name} tirou ${result2} em ${matematic.name}`)
+
+console.log(matematic.max([student1,student2]))
