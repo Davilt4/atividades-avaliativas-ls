@@ -1,5 +1,3 @@
-// const jsonPath = '../country-flags/json/paises.json';
-
 async function loadFlagsAndNames() {
   try {
 
