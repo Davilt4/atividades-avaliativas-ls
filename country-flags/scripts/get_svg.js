@@ -19,14 +19,17 @@ async function loadFlagsAndNames() {
         countryDiv.className = 'country';
 
         const img = document.createElement('img');
+        const imgDiv = document.createElement('div');
         img.src = file.download_url;
         img.alt = `Bandeira do país ${countryName}`;
+
+        imgDiv.appendChild(img);
 
         const nameLabel = document.createElement('p');
         nameLabel.textContent = countryName;
 
 
-        countryDiv.appendChild(img);
+        countryDiv.appendChild(imgDiv);
         countryDiv.appendChild(nameLabel);
         flagsContainer.appendChild(countryDiv);
       }
