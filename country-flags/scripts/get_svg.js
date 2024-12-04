@@ -1,9 +1,10 @@
-const jsonPath = '../country-flags/json/paises.json';
+// const jsonPath = '../country-flags/json/paises.json';
 
 async function loadFlagsAndNames() {
   try {
-    const response = await fetch(jsonPath);
-    const countryNames = await response.json();
+
+    const response = await fetch('https://raw.githubusercontent.com/hampusborgos/country-flags/main/countries.json');
+    const countryNames = await response.json(); 
 
     const githubResponse = await fetch('https://api.github.com/repos/hampusborgos/country-flags/contents/svg');
     const files = await githubResponse.json();
